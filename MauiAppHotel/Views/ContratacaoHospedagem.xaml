@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHotel.Views.ContratacaoHospedagem"
+             Title="ContratacaoHospedagem"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F5F5F5">
+
+    <ScrollView>
+        <VerticalStackLayout VerticalOptions="CenterAndExpand"
+                            Padding="20"
+                            Spacing="20">
+
+            <!-- Cabeçalho Elegante -->
+            <Frame BackgroundColor="#1E3D59" 
+                   Padding="20" 
+                   CornerRadius="15" 
+                   HasShadow="True">
+                <Label Text="Reserva de Hospedagem"
+                       FontFamily="Montserrat"
+                       FontSize="32"
+                       HorizontalOptions="Center"
+                       TextColor="White"
+                       FontAttributes="Bold"/>
+            </Frame>
+
+            <!-- Container Principal -->
+            <Frame Padding="20" 
+                   CornerRadius="15" 
+                   HasShadow="True" 
+                   BackgroundColor="White"
+                   BorderColor="#E5E5E5">
+                <VerticalStackLayout Spacing="15">
+
+                    <!-- Seção de Hóspedes -->
+                    <Frame BackgroundColor="#F8F9FA" 
+                           CornerRadius="10" 
+                           Padding="15">
+                        <VerticalStackLayout Spacing="15">
+                            <Label Text="NÚMERO DE HÓSPEDES"
+                                   TextColor="#1E3D59"
+                                   FontAttributes="Bold"
+                                   FontSize="18"/>
+
+                            <Grid RowDefinitions="Auto, Auto"
+                                  ColumnDefinitions="*, *, 2*"
+                                  RowSpacing="15">
+                                
+                                <!-- Adultos -->
+                                <Label Grid.Row="0" Grid.Column="0"
+                                       Text="Adultos:"
+                                       FontSize="16"
+                                       TextColor="#2C3E50"/>
+                                
+                                <Label Grid.Row="0" Grid.Column="1"
+                                       TextColor="#FF6B6B"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       Text="{Binding Value}"
+                                       BindingContext="{x:Reference stp_adultos}"/>
+
+                                <Stepper Grid.Row="0" Grid.Column="2"
+                                         x:Name="stp_adultos"
+                                         Minimum="1"
+                                         Maximum="10"
+                                         Increment="1"/>
+
+                                <!-- Crianças -->
+                                <Label Grid.Row="1" Grid.Column="0"
+                                       Text="Crianças:"
+                                       FontSize="16"
+                                       TextColor="#2C3E50"/>
+
+                                <Label Grid.Row="1" Grid.Column="1"
+                                       TextColor="#FF6B6B"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       Text="{Binding Value}"
+                                       BindingContext="{x:Reference stp_criancas}"/>
+
+                                <Stepper Grid.Row="1" Grid.Column="2"
+                                         x:Name="stp_criancas"
+                                         Minimum="0"
+                                         Maximum="10"
+                                         Increment="1"/>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Seleção de Suíte -->
+                    <Frame BackgroundColor="#F8F9FA" 
+                           CornerRadius="10" 
+                           Padding="15">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="ESCOLHA SUA SUÍTE"
+                                   TextColor="#1E3D59"
+                                   FontAttributes="Bold"
+                                   FontSize="18"/>
+
+                            <Picker x:Name="pck_quarto"
+                                    Title="Selecione sua Acomodação"
+                                    TitleColor="#6C757D"
+                                    TextColor="#2C3E50"
+                                    BackgroundColor="White"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Período da Estadia -->
+                    <Frame BackgroundColor="#F8F9FA" 
+                           CornerRadius="10" 
+                           Padding="15">
+                        <VerticalStackLayout Spacing="15">
+                            <Label Text="PERÍODO DA ESTADIA"
+                                   TextColor="#1E3D59"
+                                   FontAttributes="Bold"
+                                   FontSize="18"/>
+
+                            <Grid RowDefinitions="Auto, Auto"
+                                  ColumnDefinitions="Auto, *"
+                                  RowSpacing="15"
+                                  ColumnSpacing="10">
+                                
+                                <Label Grid.Row="0" Grid.Column="0"
+                                       Text="Check-in:"
+                                       FontSize="16"
+                                       VerticalOptions="Center"
+                                       TextColor="#2C3E50"/>
+                                
+                                <DatePicker Grid.Row="0" Grid.Column="1"
+                                           x:Name="dtpck_checkin"
+                                           Format="dd/MM/yyyy"
+                                           BackgroundColor="White"/>
+
+                                <Label Grid.Row="1" Grid.Column="0"
+                                       Text="Check-out:"
+                                       FontSize="16"
+                                       VerticalOptions="Center"
+                                       TextColor="#2C3E50"/>
+                                
+                                <DatePicker Grid.Row="1" Grid.Column="1"
+                                           x:Name="dtpck_checkout"
+                                           Format="dd/MM/yyyy"
+                                           BackgroundColor="White"/>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Botão de Ação -->
+                    <Button Text="CONFIRMAR RESERVA"
+                            BackgroundColor="#FF6B6B"
+                            TextColor="White"
+                            CornerRadius="25"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            HeightRequest="50"
+                            Margin="0,10,0,0">
+                        <Button.Shadow>
+                            <Shadow Brush="#FF6B6B"
+                                   Offset="0,4"
+                                   Radius="8"
+                                   Opacity="0.3"/>
+                        </Button.Shadow>
+                    </Button>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
